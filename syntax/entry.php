@@ -133,7 +133,7 @@ class syntax_plugin_data_entry extends DokuWiki_Syntax_Plugin {
         if (method_exists($R, 'startSectionEdit')) {
             $data['classes'] .= ' ' . $R->startSectionEdit($data['pos'], 'plugin_data');
         }
-        $ret .= '<div class="inline dataplugin_entry '.$data['classes'].'"><dl>';
+        $ret .= '<div class="inline dataplugin_entry '.$data['classes'].'"><table>';
         $class_names = array();
         foreach($data['data'] as $key => $val){
             if($val == '' || !count($val)) continue;
@@ -143,8 +143,8 @@ class syntax_plugin_data_entry extends DokuWiki_Syntax_Plugin {
 
 
             $class_name = hsc(sectionID($key, $class_names));
-            $ret .= '<dt class="' . $class_name . '">'.hsc($data['cols'][$key]['title']).'<span class="sep">: </span></dt>';
-            $ret .= '<dd class="' . $class_name . '">';
+            $ret .= '<tr valign="top"><td class="' . $class_name . '">'.hsc($data['cols'][$key]['title']).'<span class="sep">: </span></td>';
+            $ret .= '<td class="' . $class_name . '">';
             if(is_array($val)){
                 $cnt = count($val);
                 for ($i=0; $i<$cnt; $i++){
@@ -168,9 +168,9 @@ class syntax_plugin_data_entry extends DokuWiki_Syntax_Plugin {
                 }
                 $ret .= $this->dthlp->_formatData($data['cols'][$key], $val, $R);
             }
-            $ret .= '</dd>';
+            $ret .= '</td></tr>';
         }
-        $ret .= '</dl></div>';
+        $ret .= '</table></div>';
         $R->doc .= $ret;
         if (method_exists($R, 'finishSectionEdit')) {
             $R->finishSectionEdit($data['len'] + $data['pos']);
