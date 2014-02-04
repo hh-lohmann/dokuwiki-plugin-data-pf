@@ -3,6 +3,7 @@
  *
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  * @author     Andreas Gohr <andi@splitbrain.org>
+ * @author     hh.lohmann <hh.lohmann@yahoo.de>
  */
 // must be run within Dokuwiki
 if(!defined('DOKU_INC')) die();
@@ -129,6 +130,16 @@ class syntax_plugin_data_entry extends DokuWiki_Syntax_Plugin {
     function _showData($data,&$R){
         global $ID;
         $ret = '';
+
+        $R->info['cache'] = false;
+        $crumbs = array_reverse(breadcrumbs());
+        $i = 0;
+        foreach($crumbs as $id => $name) {
+          if ( $i == 1 ) { break; }
+          $i++;
+        }
+        $meta = p_get_metadata( $id );
+        $ret .= '<p style=" margin: 1em; border: thin outset; padding: 0.5em; font-weight: bold; font-style: italic; ">'.html_wikilink(':'.$id,'⇐ zurück zu: '.$meta['title']).'</p>';
 
         if (method_exists($R, 'startSectionEdit')) {
             $data['classes'] .= ' ' . $R->startSectionEdit($data['pos'], 'plugin_data');
