@@ -15,7 +15,7 @@ For copyright details see https://github.com/splitbrain/dokuwiki-plugin-data/blo
 Third party copyrights are indicated in code when appropriate
 
 Modified work: dokuwiki-plugin-data-pf
-Copyright (C) hh.lohmann <hh.lohmann@splitbrain.org>
+Copyright (C) hh.lohmann <hh.lohmann@yahoo.de>
 For copyright details see LICENSE file in the given package
 
 
