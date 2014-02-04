@@ -2,6 +2,7 @@
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  * @author     Andreas Gohr <andi@splitbrain.org>
+ * @author     hh.lohmann <hh.lohmann@yahoo.de>
  */
 // must be run within Dokuwiki
 if(!defined('DOKU_INC')) die();
