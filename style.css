@@ -101,7 +101,7 @@ dl.datarelated dt {
 #dw__editform fieldset.plugin__data table td select,
 #dw__editform fieldset.plugin__data table td input {
     width: 50em;
-    height: 5em;
+    height: 2em;
 }
 
 #dw__editform fieldset.plugin__data table .data_comment input {
