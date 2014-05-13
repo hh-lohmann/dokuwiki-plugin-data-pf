@@ -96,6 +96,7 @@ dl.datarelated dt {
 
 #dw__editform fieldset.plugin__data table td {
     padding: 0 0.3em;
+    vertical-align: middle;
 }
 
 #dw__editform fieldset.plugin__data table td select,
