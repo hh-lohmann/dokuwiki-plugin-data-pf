@@ -136,6 +136,6 @@ table.dataplugin_table th input {
 }
 
 /* datatable */
-div.dataaggregation a{
+div.dataaggregation th a{
     color: inherit;
 }
