@@ -1,7 +1,7 @@
 base    data
 author  hh.lohmann (originally Andreas Gohr)
 email   hh.lohmann@yahoo.de
-date    2014-05-14 07:36
+date    2014-05-14 07:48
 name    Structured Data Plugin
 desc    MODIFIED COPY of https://www.dokuwiki.org/plugin:data
 url     https://github.com/hh-lohmann/dokuwiki-plugin-data-pf
