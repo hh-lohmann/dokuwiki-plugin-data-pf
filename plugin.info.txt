@@ -1,7 +1,7 @@
-base    dataPF
+base    data
 author  hh.lohmann
 email   hh.lohmann@yahoo.de
-date    2014-05-14 08:08
+date    2014-05-14 08:20
 name    Structured Data Plugin
 desc    MODIFIED COPY of Andreas Gohr's original work - DO NOT INSTALL ORIGINAL DATA PLUGIN AT THE SAME TIME!
 url     https://github.com/hh-lohmann/dokuwiki-plugin-data-pf
