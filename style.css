@@ -134,3 +134,8 @@ table.dataplugin_table th input {
 .ui-menu {
     font-size: 1em;
 }
+
+/* datatable */
+div.dataaggregation a{
+    color: inherit;
+}
