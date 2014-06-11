@@ -2,7 +2,6 @@
 /**
  * @license    GPL 2 (http://www.gnu.org/licenses/gpl.html)
  * @author     Andreas Gohr <andi@splitbrain.org>
- * @author     hh.lohmann <hh.lohmann@yahoo.de>
  */
 // must be run within Dokuwiki
 if(!defined('DOKU_INC')) die();
@@ -54,6 +53,7 @@ class helper_plugin_data extends DokuWiki_Plugin {
     }
 
     protected function  determineLang() {
+        /** @var helper_plugin_translation $trans */
         $trans = plugin_load('helper','translation');
         if ($trans) {
             $value = $trans->getLangPart(getID());
@@ -75,13 +75,13 @@ class helper_plugin_data extends DokuWiki_Plugin {
      */
     function _getDB(){
         if ($this->db === null) {
-            $this->db =& plugin_load('helper', 'sqlite');
+            $this->db = plugin_load('helper', 'sqlite');
             if ($this->db === null) {
                 msg('The data plugin needs the sqlite plugin', -1);
                 return false;
             }
             if(!$this->db->init('data',dirname(__FILE__).'/db/')){
-                $db = null;
+                $this->db = null;
                 return false;
             }
             $this->db->create_function('DATARESOLVE',array($this,'_resolveData'),2);
@@ -267,6 +267,7 @@ class helper_plugin_data extends DokuWiki_Plugin {
     /**
      * Split a column name into its parts
      *
+     * @param string $col column name
      * @returns array with key, type, ismulti, title, opt
      */
     function _column($col){
@@ -274,7 +275,8 @@ class helper_plugin_data extends DokuWiki_Plugin {
         $column = array(
             'colname' => $col,
             'multi'   => ($matches[3] === 's'),
-            'key'     => $matches[1],
+            'key'     => utf8_strtolower($matches[1]),
+            'origkey' => $matches[1], //similar to key, but stores upper case
             'title'   => $matches[1],
             'type'    => utf8_strtolower($matches[2])
         );
@@ -408,6 +410,7 @@ class helper_plugin_data extends DokuWiki_Plugin {
 
         // if translation plugin available, get current translation (empty for default lang)
         $patterns[] = '%trans%';
+        /** @var helper_plugin_translation $trans */
         $trans = plugin_load('helper','translation');
         if($trans) {
             $local = $trans->getLangPart($ID);
